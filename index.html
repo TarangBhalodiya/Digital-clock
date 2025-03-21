@@ -1,0 +1,71 @@
+<!-- Digital Clock, Countdown Timer, stopWatch(Start, Stop, Reset) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="script.js"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --font-Josefin-sans: "Josefin Sans", "sans";
+        --font-Tektur: "Tektur", "sans";
+        --color-navy: #05011b;
+        --color-faded-blue: #1c1547;
+        --color-light-purple: #a8a4c4;
+      }
+      .nav-link {
+        @apply font-Josefin-sans text-xl text-light-purple hover:text-white transition-all ease-out duration-200 tracking-wide max-md:block;
+      }
+    </style>
+    <title>Digital clock</title>
+  </head>
+
+  <body class="bg-navy min-h-screen overflow-hidden flex flex-col">
+    <header>
+      <nav class="custom-container">
+        <div class="py-5 flex justify-between">
+          <div>
+            <span class="font-bold text-3xl font-Josefin-sans text-white"
+              >CLOCK</span
+            >
+          </div>
+          <div class="relavtive">
+            <div
+              class="space-x-7 max-md:hidden max-md:absolute max-md:top-20 max-md:right-0 max-md:space-y-3"
+              id="menu"
+            >
+              <a href="#" class="nav-link">Countdown</a>
+              <a href="#" class="nav-link">Stop watch</a>
+            </div>
+            <button
+              id="menu-btn"
+              class="md:hidden text-white text-3xl focus:outline-none"
+            >
+              &#9776;
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="h-max flex-1 flex justify-center items-center">
+      <div class="custom-container h-full">
+        <!-- Clock -->
+        <div id="clock" class="h-full">
+          <h1
+            id="displayTime"
+            class="text-3xl sm:text-5xl md:text-7xl lg:text-9xl text-white font-Tektur bg-light-purple w-fit p-8 sm:p-14 lg:p-20 rounded-3xl mx-auto"
+          ></h1>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
