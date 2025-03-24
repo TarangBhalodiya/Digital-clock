@@ -1,12 +1,3 @@
-const menuBtn = document.getElementById("menu-btn");
-const mobileMenu = document.getElementById("menu");
-
-menuBtn.addEventListener("click", () => {
-  mobileMenu?.classList?.contains("max-md:hidden")
-    ? mobileMenu?.classList?.remove("max-md:hidden")
-    : mobileMenu?.classList?.add("max-md:hidden");
-});
-
 const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
 const resetBtn = document.getElementById("reset-btn");
@@ -66,6 +57,6 @@ function updateDisplay() {
   ).padStart(2, "0")}`;
 }
 
-startBtn.addEventListener("click", startStopwatch);
-stopBtn.addEventListener("click", stopStopwatch);
-resetBtn.addEventListener("click", resetStopwatch);
+startBtn?.addEventListener("click", startStopwatch);
+stopBtn?.addEventListener("click", stopStopwatch);
+resetBtn?.addEventListener("click", resetStopwatch);

@@ -1,23 +1,16 @@
-//  Navigation bar
-const menuBtn = document.getElementById("menu-btn");
-const mobileMenu = document.getElementById("menu");
-
-menuBtn.addEventListener("click", () => {
-  mobileMenu?.classList?.contains("max-md:hidden")
-    ? mobileMenu?.classList?.remove("max-md:hidden")
-    : mobileMenu?.classList?.add("max-md:hidden");
-});
-
-let countdown;
-let totalSeconds = 0;
-const initialTime = 0;
 const displayElem = document.getElementById("countdown-display");
-const startBtn = document.getElementById("start-btn");
-const stopBtn = document.getElementById("stop-btn");
-const resetBtn = document.getElementById("reset-btn");
+
 const hourDisplay = document.getElementById("hour");
 const minuteDisplay = document.getElementById("minute");
 const secondDisplay = document.getElementById("second");
+
+const startBtn = document.getElementById("start-btn");
+const stopBtn = document.getElementById("stop-btn");
+const resetBtn = document.getElementById("reset-btn");
+
+let countdown;
+let totalSeconds = 0;
+let isRunning = false;
 
 function addTimer(event) {
   event.preventDefault();
@@ -37,8 +30,22 @@ function addTimer(event) {
   updateDisplay();
 }
 
+// add to dom
+function updateDisplay() {
+  let displayHours = Math.floor(totalSeconds / 3600); // 3678 = 1 hour reminder 78 seconds = 1 hour & 1 minute & 18 seconds
+  let displayMinutes = Math.floor((totalSeconds % 3600) / 60); // 3678 = 1 minute reminder 18 seconds
+  let displaySeconds = totalSeconds % 60; // 18 seconds
+
+  displayElem.innerText = `${String(displayHours).padStart(2, "0")}:${String(
+    displayMinutes
+  ).padStart(2, "0")}:${String(displaySeconds).padStart(2, "0")}`;
+}
+
 // start countdown
 function startCountdown() {
+  if (isRunning) return;
+
+  isRunning = true;
   if (totalSeconds <= 0) {
     alert("Please set a valid time first!");
   }
@@ -57,24 +64,15 @@ function startCountdown() {
 
 // Stop countdown
 function stopCountdown() {
+  isRunning = false;
   clearInterval(countdown);
 }
 
 function resetCountdown() {
+  isRunning = false;
   clearInterval(countdown);
-  totalSeconds = initialTime;
+  totalSeconds = 0;
   updateDisplay();
-}
-
-// add to dom
-function updateDisplay() {
-  let displayHours = Math.floor(totalSeconds / 3600); // 3678 = 1 hour reminder 78 seconds = 1 hour & 1 minute & 18 seconds
-  let displayMinutes = Math.floor((totalSeconds % 3600) / 60); // 3678 = 1 minute reminder 18 seconds
-  let displaySeconds = totalSeconds % 60; // 18 seconds
-
-  displayElem.innerText = `${String(displayHours).padStart(2, "0")}:${String(
-    displayMinutes
-  ).padStart(2, "0")}:${String(displaySeconds).padStart(2, "0")}`;
 }
 
 startBtn?.addEventListener("click", startCountdown);

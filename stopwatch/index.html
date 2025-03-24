@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Stop watch</title>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,8 +13,12 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tektur:wght@400..900&display=swap"
       rel="stylesheet"
     />
+
+    <script defer src="../hamburger.js"></script>
     <script defer src="stopwatch.js"></script>
+
     <link rel="stylesheet" href="../style.css" type="text/css" />
+
     <style type="text/tailwindcss">
       @theme {
         --font-Josefin-sans: "Josefin Sans", "sans";
@@ -31,6 +37,7 @@
   </head>
   <body class="bg-navy min-h-screen flex flex-col">
     <header>
+      <!-- nav bar -->
       <nav class="custom-container">
         <div class="py-5 flex justify-between">
           <div>
@@ -40,6 +47,7 @@
               >
             </a>
           </div>
+
           <div class="relavtive">
             <div
               class="space-x-7 max-md:hidden max-md:absolute max-md:top-20 max-md:right-0 max-md:space-y-3"
@@ -48,6 +56,7 @@
               <a href="../countdown/index.html" class="nav-link">Countdown</a>
               <a href="./index.html" class="nav-link">Stop watch</a>
             </div>
+
             <button
               id="menu-btn"
               class="md:hidden text-white text-3xl focus:outline-none"
@@ -60,6 +69,7 @@
     </header>
 
     <main class="flex flex-col items-center justify-center flex-grow">
+      <!-- display stopwatch  -->
       <span
         id="stopwatch-display"
         class="text-5xl md:text-7xl lg:text-9xl text-white font-Tektur bg-light-purple w-fit p-8 sm:p-14 lg:p-20 rounded-3xl mx-auto block mt-10"
