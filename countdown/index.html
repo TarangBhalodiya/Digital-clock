@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="countdown.js"></script>
+    <link rel="stylesheet" href="../style.css" type="text/css" />
+    <style type="text/tailwindcss">
+      @theme {
+        --font-Josefin-sans: "Josefin Sans", "sans";
+        --font-Tektur: "Tektur", "sans";
+        --color-navy: #05011b;
+        --color-faded-blue: #1c1547;
+        --color-light-purple: #a8a4c4;
+      }
+      .nav-link {
+        @apply font-Josefin-sans text-xl text-light-purple hover:text-white transition-all ease-out duration-200 tracking-wide max-md:block;
+      }
+      .input-field {
+        @apply text-white w-24 p-3 text-center border border-light-purple rounded-md bg-transparent focus:outline-none focus:ring-2 focus:ring-light-purple;
+      }
+      .btn {
+        @apply bg-faded-blue px-6 py-2 text-white rounded-full border border-light-purple font-Josefin-sans transition-all ease-out duration-200 hover:bg-light-purple;
+      }
+    </style>
+  </head>
+  <body class="bg-navy min-h-screen flex flex-col">
+    <!--  Header Section -->
+    <header>
+      <nav class="custom-container">
+        <div class="py-5 flex justify-between">
+          <div>
+            <a href="/">
+              <span class="font-bold text-3xl font-Josefin-sans text-white"
+                >CLOCK</span
+              >
+            </a>
+          </div>
+          <div class="relavtive">
+            <div
+              class="space-x-7 max-md:hidden max-md:absolute max-md:top-20 max-md:right-0 max-md:space-y-3"
+              id="menu"
+            >
+              <a href="./index.html" class="nav-link">Countdown</a>
+              <a href="../stopwatch/index.html" class="nav-link">Stop watch</a>
+            </div>
+            <button
+              id="menu-btn"
+              class="md:hidden text-white text-3xl focus:outline-none"
+            >
+              &#9776;
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--  Countdown Timer Section (Updated) -->
+    <main class="flex flex-col items-center justify-center flex-grow">
+      <!-- Input Fields -->
+      <form class="flex flex-col items-center" onsubmit="addTimer(event)">
+        <div class="flex gap-3">
+          <input
+            type="number"
+            id="hour"
+            placeholder="Hours"
+            class="input-field"
+          />
+          <input
+            type="number"
+            id="minute"
+            placeholder="Minutes"
+            class="input-field"
+          />
+          <input
+            type="number"
+            id="second"
+            placeholder="Seconds"
+            class="input-field"
+          />
+        </div>
+        <button type="submit" class="btn mt-5">Add Timer</button>
+      </form>
+
+      <!-- Countdown Display -->
+      <div>
+        <span
+          id="countdown-display"
+          class="text-5xl md:text-7xl lg:text-9xl text-white font-Tektur bg-light-purple w-fit p-8 sm:p-14 lg:p-20 rounded-3xl mx-auto block mt-10"
+        >
+          00:00:00
+        </span>
+      </div>
+
+      <!-- Start and Stop Buttons -->
+      <div class="flex gap-4 mt-5">
+        <button id="start-btn" class="btn">Start</button>
+        <button id="stop-btn" class="btn">Stop</button>
+        <button id="reset-btn" class="btn">Reset</button>
+      </div>
+    </main>
+  </body>
+</html>

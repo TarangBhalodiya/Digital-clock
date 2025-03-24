@@ -1,9 +1,9 @@
-<!-- Digital Clock, Countdown Timer, stopWatch(Start, Stop, Reset) -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop watch</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tektur:wght@400..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
-    <script defer src="script.js"></script>
+    <script defer src="stopwatch.js"></script>
+    <link rel="stylesheet" href="../style.css" type="text/css" />
     <style type="text/tailwindcss">
       @theme {
         --font-Josefin-sans: "Josefin Sans", "sans";
@@ -24,26 +24,29 @@
       .nav-link {
         @apply font-Josefin-sans text-xl text-light-purple hover:text-white transition-all ease-out duration-200 tracking-wide max-md:block;
       }
+      .btn {
+        @apply bg-faded-blue px-6 py-2 text-white rounded-full border border-light-purple font-Josefin-sans transition-all ease-out duration-200 hover:bg-light-purple;
+      }
     </style>
-    <title>Digital clock</title>
   </head>
-
-  <body class="bg-navy min-h-screen overflow-hidden flex flex-col">
+  <body class="bg-navy min-h-screen flex flex-col">
     <header>
       <nav class="custom-container">
         <div class="py-5 flex justify-between">
           <div>
-            <span class="font-bold text-3xl font-Josefin-sans text-white"
-              >CLOCK</span
-            >
+            <a href="/">
+              <span class="font-bold text-3xl font-Josefin-sans text-white"
+                >CLOCK</span
+              >
+            </a>
           </div>
           <div class="relavtive">
             <div
               class="space-x-7 max-md:hidden max-md:absolute max-md:top-20 max-md:right-0 max-md:space-y-3"
               id="menu"
             >
-              <a href="./countdown/index.html" class="nav-link">Countdown</a>
-              <a href="./stopwatch/index.html" class="nav-link">Stop watch</a>
+              <a href="../countdown/index.html" class="nav-link">Countdown</a>
+              <a href="./index.html" class="nav-link">Stop watch</a>
             </div>
             <button
               id="menu-btn"
@@ -56,15 +59,17 @@
       </nav>
     </header>
 
-    <main class="h-max flex-1 flex justify-center items-center">
-      <div class="custom-container h-full">
-        <!-- Clock -->
-        <div id="clock" class="h-full">
-          <h1
-            id="displayTime"
-            class="text-3xl sm:text-5xl md:text-7xl lg:text-9xl text-white font-Tektur bg-light-purple w-fit p-8 sm:p-14 lg:p-20 rounded-3xl mx-auto"
-          ></h1>
-        </div>
+    <main class="flex flex-col items-center justify-center flex-grow">
+      <span
+        id="stopwatch-display"
+        class="text-5xl md:text-7xl lg:text-9xl text-white font-Tektur bg-light-purple w-fit p-8 sm:p-14 lg:p-20 rounded-3xl mx-auto block mt-10"
+      >
+        00:00:00:00
+      </span>
+      <div class="flex gap-4 mt-5">
+        <button id="start-btn" class="btn">Start</button>
+        <button id="stop-btn" class="btn">Stop</button>
+        <button id="reset-btn" class="btn">Reset</button>
       </div>
     </main>
   </body>
